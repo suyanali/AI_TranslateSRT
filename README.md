@@ -1,6 +1,5 @@
 # AI 字幕轉錄工具 
-
-![Static Badge](https://img.shields.io/badge/For_Windows-Download-blue) ![Static Badge](https://img.shields.io/badge/For_Mac-Download-Red)
+[![For Windows - Download exe](https://img.shields.io/badge/For%20Windows-Download%20exe-blue?style=for-the-badge&logo=windows)](https://github.com/suyanali/AI_TranslateSRT/releases/download/v1.0/Release_windows_v1.0.zip)    [![For Mac - Download Source Code](https://img.shields.io/badge/For%20Mac-Download%20Source%20Code-blue?style=for-the-badge&logo=apple)](https://github.com/suyanali/AI_TranslateSRT/archive/refs/heads/main.zip)
 
 這是一個使用 Google Gemini API 的圖形化工具，可以將**影片或音訊**檔案（包含外語內容翻譯）自動轉錄成帶有時間軸的 SRT 字幕檔案。本工具整合了日誌記錄與 AI 智慧摘要功能，讓整個轉錄流程更加自動化且易於追蹤。所有功能都是使用 GEMINI CLI共同討論做出來的，有 bug 可以回報，但我可能修不好😅。 
 
@@ -25,7 +24,7 @@
 此方式最為簡單，推薦給所有 Windows 使用者。
 
 1.  **下載檔案** 
-    *   從本專案的 [Releases 頁面](https://github.com/YOUR_USERNAME/YOUR_REPOSITORY/releases) 下載最新的 `Release(for windows).zip` 壓縮檔。
+    *   從本專案的 [Releases 頁面](https://github.com/suyanali/AI_TranslateSRT/releases) 下載最新的 `Release_windows.zip` 壓縮檔。
 
 2.  **解壓縮** 
     *   將下載的 `.zip` 檔案解壓縮到您電腦的任何位置，例如桌面。
