@@ -71,7 +71,7 @@ pip install -r requirements.txt
 
 #### 4. 執行程式
 
-在終端機中，繼續使用以下指令來啟動圖形化介面：(` transcribe_pro_gui.py` 、`transcribe_pro_v5_branch_04_branch_11.py`請放置同一資料夾裡)
+在終端機中，繼續使用以下指令來啟動圖形化介面：(` transcribe_pro_gui.py` 、`transcribe_pro_v5_branch_04_branch_12.py`請放置同一資料夾裡)
 
 ```bash
 python transcribe_pro_gui.py
