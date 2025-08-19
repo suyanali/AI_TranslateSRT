@@ -1,1 +1,6 @@
+# Install all dependencies with:
+#   pip install -r requirements.txt
+
+# Core dependency for Google Gemini API
 google-genai
+

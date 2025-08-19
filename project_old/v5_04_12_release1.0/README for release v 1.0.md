@@ -1,0 +1,181 @@
+# AI 字幕轉錄工具 
+[![For Windows - Download exe](https://img.shields.io/badge/For%20Windows-Download%20exe-blue?style=for-the-badge&logo=windows)](https://github.com/suyanali/AI_TranslateSRT/releases/download/v1.0/Release_windows_v1.0.zip)    [![For Mac - Download Source Code](https://img.shields.io/badge/For%20Mac-Download%20Source%20Code-blue?style=for-the-badge&logo=apple)](https://github.com/suyanali/AI_TranslateSRT/archive/refs/heads/main.zip)
+
+這是一個使用 Google Gemini API 的圖形化工具，可以將**影片或音訊**檔案（包含外語內容翻譯）自動轉錄成帶有時間軸的 SRT 字幕檔案。本工具整合了日誌記錄與 AI 智慧摘要功能，讓整個轉錄流程更加自動化且易於追蹤。所有功能都是使用 GEMINI CLI共同討論做出來的，有 bug 可以回報，但我可能修不好😅。 
+
+
+
+## ✨ 主要功能
+
+*   **圖形化介面**：無需接觸複雜的指令，所有操作都在友善的視窗中完成。
+*   **動態 Prompt**：可根據需求自訂目標語言、專有名詞對照表，動態生成最佳化的提示指令。
+*   **參數可調**：支援自訂 API Key、Gemini 模型、音訊分段時長等多項核心參數。
+*   **完整日誌**：自動記錄詳細的執行過程，並在介面上即時顯示，方便追蹤進度與排查問題。
+*   **智慧摘要**：在轉錄完成後，會自動呼叫 Gemini API 分析日誌，生成一份簡潔的摘要報告，快速了解轉錄過程中的關鍵事件。
+
+---
+
+## 🚀 開始使用
+
+本工具提供兩種使用方式，請根據您的作業系統和需求選擇其中一種。
+
+### 方式一：Windows 使用者 (快速開始)
+
+此方式最為簡單，推薦給所有 Windows 使用者。
+
+1.  **下載檔案** 
+    *   從本專案的 [Releases 頁面](https://github.com/suyanali/AI_TranslateSRT/releases) 下載最新的 `Release_windows.zip` 壓縮檔。
+
+2.  **解壓縮** 
+    *   將下載的 `.zip` 檔案解壓縮到您電腦的任何位置，例如桌面。
+
+3.  **確認檔案完整 (非常重要！)** ⚠️
+    *   解壓縮後，請確保資料夾內**至少包含**以下兩個檔案：
+        1.  `AI_TranslateSRT.exe` (主程式)
+        2.  `ffmpeg.exe` (音訊處理工具)
+    *   **注意：請務必將 `AI_TranslateSRT.exe` 和 `ffmpeg.exe` 始終放在同一個資料夾中！** 另外，您也可以將 `ffmpeg.exe` 加入環境變數 PATH 中，以便在任何位置使用。
+
+4.  **執行程式** 
+    *   直接按兩下 `AI_TranslateSRT.exe` 即可啟動程式。
+
+
+
+### 方式二：從原始碼執行 (開發者 / Mac / Linux 使用者)
+
+此方式適用於非 Windows 使用者，或希望自行修改、研究程式碼的開發者。(我沒有mac跟linux，所以下面安裝指南是ai寫的)
+
+#### 1. 環境設定
+
+*   **安裝 Python 3**：請確保您的系統已安裝 Python 3.8 或更高版本。您可以從 [Python 官網](https://www.python.org/downloads/) 下載。
+*   **安裝 FFmpeg**：請確保您的系統已安裝 FFmpeg，並將其加入到系統的環境變數 (PATH) 中。
+    *   **Mac 使用者**可透過 [Homebrew](https://brew.sh/) 輕鬆安裝： `brew install ffmpeg`
+    *   **Linux 使用者**可透過包管理器安裝： `sudo apt update && sudo apt install ffmpeg`
+
+#### 2. 下載原始碼
+
+*   您可以 `git clone` 本專案，或從 GitHub 頁面點擊 `Code` -> `Download ZIP` 來下載原始碼。
+
+#### 3. 安裝 Python 依賴套件
+
+在您的專案資料夾中，打開終端機並執行以下指令：
+
+(使用 requirements.txt 安裝所有必要的 Python 套件)
+
+```bash
+pip install -r requirements.txt
+```
+
+或者  
+
+`pip install google-genai`
+
+#### 4. 執行程式
+
+在終端機中，繼續使用以下指令來啟動圖形化介面：(` transcribe_pro_gui.py` 、`transcribe_pro_v5_branch_04_branch_12.py`請放置同一資料夾裡)
+
+```bash
+python transcribe_pro_gui.py
+```
+
+---
+
+
+
+## 📖 介面說明  
+
+![Imgur](https://i.imgur.com/HvEqpoF.png)  
+
+
+
+## **步驟**：  
+
+選擇來源的影音檔 ➤ 進階設定中選擇要翻譯成的語言 ➤ 指定翻譯的名稱（例如角色名字、地名、專有名詞）➤ 填入 API Key ➤ 按下「開始轉錄」（請先確認 FFmpeg.exe 是否已放在同一個資料夾中）➤ SRT檢查、看日誌
+
+
+
+1. **選擇來源檔案**  
+   點擊 選擇檔案... 按鈕，選擇您想要轉錄的影片 (.mp4, .mkv) 或音訊 (.mp3, .wav) 檔案。  
+
+2. **設定轉錄與翻譯規則**  
+
+   * **主要規則**：這裡包含了給 AI 的核心指令，可自定義，通常不需要修改。**(若是您目標語言並非中文，請於內文裡一行字數上限部分做修正)**
+
+   * **進階設定**：
+     * **目標語言**：您希望字幕被翻譯成的語言，例如「繁體中文」或「英文」。
+     * **人名或術語對應表**：如果影片中有特定的專有名詞或人名，您可以在這裡設定對照表 (例如 Gemini = 雙子星)，AI 會優先使用您設定的翻譯。
+       * 可自行建立或由 AI 協助，例如perplexity.ai，prompt：「音樂劇「XXXXX」中所有角色、演員、專有名詞的`{原始語言}`名字及其常見`{目標語言}`名字翻譯對照表。請用以下格式整理:  シエル → 謝爾」
+
+3. 參數說明
+
+   *   **API Key**：您的 Google API 金鑰。如果留空，程式會嘗試從系統環境變數讀取。
+
+   *   **模型名稱**：使用的 Gemini 模型，預設為 `models/gemini-2.5-pro`。可根據需求更換。**PS: 建議至少使用gemini-2.5-pro模型。** 其他低階模型品質差。  
+
+   *   **分段時長 (秒)**：將大型影音檔切成小段落處理的時長，預設為 600 秒 (10分鐘)，設定太長會在後續語音轉文字時容易失敗，建議不要動。
+   *   暫存資料夾：設定在處理過程中，臨時儲存音訊片段的資料夾路徑。默認在本程式所在資料夾生成一個temp資料夾。
+
+   *   **修正閾值**：觸發自動重試的品質標準，數字越小，標準越嚴格。
+
+   *   **重疊容忍 (秒)**：允許相鄰字幕在時間上的重疊秒數，用於處理合唱或對話緊湊的情境。
+
+
+4. 開始轉錄與查看日誌：設定完成後，點擊 **開始轉錄** 按鈕(會出現ffmepg命令視窗，不要管他會自己消失)。下方的「即時日誌」視窗會開始顯示詳細的執行過程。轉錄所需時間依檔案長度而定，請耐心等候。據筆者經驗2小時半至3小時影片，排除ffmepg轉檔的部分，純粹srt這部份生成花費時間約37分~65分，因為中間也許會觸發重試機制(修正閾值)所花時間不一定。
+
+## 🔑 關於 Google API Key
+
+本工具需要 Google API Key 才能運作。
+1.  **如何取得？** 請前往 [Google AI Studio](https://aistudio.google.com/app/apikey) 網站，登入您的 Google 帳號，右上角Create API Key→隨意選擇一個projects→即可建立免費的 API 金鑰→注意須馬上複製key，並且不要隨意告知他人。**Usage&Billing**裡面關注**Request Count per Day**，**注意每日要求數 (RPD)上限**，系統會在太平洋時間午夜重設。
+2.  **費用**：Gemini API 提供免費的使用額度，對於一般用量的個人專案通常已經足夠。可觀看官方[頻率限制說明](https://ai.google.dev/gemini-api/docs/rate-limits?hl=zh-tw) ，**gemini-2.5-pro免費方案每日要求數 (RPD)上限為100**。  
+          ![Imgur](https://i.imgur.com/H9Xz8iK.png)
+
+## 📁 關於輸出檔案
+
+轉錄成功後，所有相關檔案都會儲存在您**主程式所在的資料夾**下：
+*   `[您的影片名稱].srt`：**最終的字幕成品！**
+*   `[您的影片名稱]_日誌_[時間].txt`：本次執行的完整文字日誌。
+*   `[您的影片名稱]_摘要_[時間].txt`：由關鍵字篩選出的本地摘要以及由 AI 分析日誌後生成的智慧摘要報告。
+
+### 📝【重要】關於最終字幕的品質檢查
+
+雖然本程式內建了強大的自動校正機制，但 AI 的輸出仍可能存在瑕疵。為了確保最佳品質，**強烈建議**您在轉錄完成後，進行一個快速的檢查，同時也可以參考AI智慧摘要`[您的影片名稱]_摘要_[時間].txt`：
+
+1.  **前往暫存資料夾** (預設為程式目錄下的 `temp` 資料夾)。
+2.  **快速瀏覽分段字幕** (`_chunk_xxx.srt` 檔案)：打開所有 _chunk_xxx.srt 檔案 (例如用windows內建記事本、字幕軟體或者windows預覽視窗直接觀看)
+    - **重點觀察**：時間碼格式是否大致正確？ 有沒有出現大量亂碼或完全不相關的文字？ 有沒有沒有翻譯成目標語言的文字?
+    - 最終成品的`[您的影片名稱].srt`也建議到字幕軟體(例如subtitle edit)觀看，若有不正常的地方會上底色，可以輔助檢查。
+
+3.  如果發現某個分段字幕內容有嚴重問題，您可以**手動刪除這個有問題的檔案**(_chunk_xxx.srt & raw.txt)，然後對原始影片**重新執行一次轉錄**。程式會跳過已完成的部分，只重新處理這個被您刪除的段落，以節省時間。也可以手動修改有問題的分段字幕檔，然後重新執行程式，程式會自動合併分段字幕檔。
+
+## ❓ 常見問題 (FAQ)
+
+*   **Q: 程式點開沒反應或閃退？**
+    *   A: 請務必確認 `AI_TranslateSRT.exe` 和 `ffmpeg.exe` 在同一個資料夾下。其次，您的防毒軟體可能會誤判，請嘗試暫時停用或將本程式加入信任清單。
+
+*   **Q: 日誌中出現 `API Key` 或 `ServerError` 錯誤？**
+    * A: 請檢查您的 API Key 是否正確填寫、網路連線是否正常，以及您的 Google 帳號是否仍有可用的 API 額度。也可能是 Google 伺服器暫時不穩定，可以稍後再試。
+    
+      
+
+
+
+## 📝 To-Do List
+
+- [ ] **自訂義 URL 以及其 API Key（Gemini balance專案）**
+  - 目前卡在檔案上傳部分
+  - 或考慮其他方式可支援多 API Key 輪替使用 
+    - 目前是設定限制1分鐘上傳次數跟1分鐘上傳tokens量，到設定值就等待1分鐘
+  
+- [ ] **GUI 可儲存上次參數**
+  - 包含進階設定、API Key 等
+  - 支援另存設定檔並可匯入
+
+- [ ] **正確回傳 Tokens 使用數量**
+  - 方便監控 API 使用量
+
+- [ ] **英文版介**面
+  - [ ] 目前介面會調用指定列表裡繁中字體，都沒有會調用sans-serif。若非中文語系電腦是否會有問題(日誌區域、UI)？
+  - [ ] 切換不同語言介面(建立語言檔案?)或者做兩版
+
+- [ ] **製作輸入影片時間可以快速查找是哪個編號音檔**
+  - [ ] 調用GUI上輸入的分割時間
+
