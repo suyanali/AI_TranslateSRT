@@ -1,7 +1,9 @@
 # AI 語音轉文字 & 自動字幕生成工具 v2.0
 [![For Windows - Download exe](https://img.shields.io/badge/For%20Windows-Download%20exe-blue?style=for-the-badge&logo=windows)](https://github.com/suyanali/AI_TranslateSRT/releases/download/v2.0/Release_windows_v2.0.rar)    [![For Mac - Download Source Code](https://img.shields.io/badge/For%20Mac-Download%20Source%20Code-blue?style=for-the-badge&logo=apple)](https://github.com/suyanali/AI_TranslateSRT/archive/refs/heads/main.zip)
 
-這是一個使用 Google Gemini API 的圖形化工具，可以將**影片或音訊**檔案（包含外語內容翻譯）自動轉錄成帶有時間軸的 SRT 字幕檔案。本工具整合了日誌記錄與 SRT轉錄(AI 摘要)功能，讓整個轉錄流程更加自動化且易於追蹤。所有功能都是跟 GEMINI CLI、google ai studio與chatgpt共同討論做出來的，有 bug 可以回報，但我可能修不好😅。 
+這是一款基於 Google Gemini API 的圖形化工具，可自動將影片或音訊檔案轉錄為帶有時間軸的 SRT 字幕檔，並支援外語內容翻譯。工具整合了 日誌記錄 與 SRT 轉錄（AI 摘要） 功能，使整個轉錄流程更加自動化且方便追蹤。
+
+本工具的功能是透過 GEMINI CLI、Google AI Studio 與 ChatGPT 共同討論與實作而成。若使用過程中發現 bug，歡迎回報，但也請見諒，修正上可能不一定能即時完成。
 
 
 
