@@ -149,7 +149,7 @@ python transcribe_pro_gui_v2_84.py
    *   **暫存資料夾**：用於存放處理中的音訊片段，預設會在主程式資料夾內建立 temp 資料夾。**並且後續不會自動刪除裡面的分割檔**，當使用者確定不會再次使用時可自行刪除。
 
 ---
-**進階參數**：  (一般無須調整，詳細功用可看 [SRT correction rules.md](detailed instruction manual/SRT correction rules.md)、[GUI advanced.md](detailed instruction manual/GUI advanced.md)）
+**進階參數**：  (一般無須調整，詳細功用可看 [SRT 校正規則](detailed_instruction_manual/SRT_correction_rules.md)、[GUI 進階功能](detailed_instruction_manual/GUI_advanced.md)）
 
    *   **修正閾值**：觸發自動重試的品質標準，數字越小，標準越嚴格。
    *   **重疊容忍 (秒)**：允許相鄰字幕在時間上的重疊秒數，用於處理合唱或對話緊湊的情境。設為負數 (例如 -1) 可完全關閉重疊偵測。
